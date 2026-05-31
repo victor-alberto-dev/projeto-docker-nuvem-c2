@@ -3,6 +3,7 @@
 Ambiente containerizado com Docker Compose provisionado em VM Linux no Azure via Terraform.
 
 **Autores:** Victor Alberto Dos Passos, Lucas Léllis Hemerly, Gustavo Covre Magalhães.
+
 **Repositório:** [github.com/victor-alberto-dev/projeto-docker-nuvem-c2](https://github.com/victor-alberto-dev/projeto-docker-nuvem-c2)
 
 ---
