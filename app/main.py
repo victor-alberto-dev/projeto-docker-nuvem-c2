@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 import time
@@ -54,3 +54,28 @@ def listar_items():
     items = db.query(Item).all()
     db.close()
     return items
+
+@app.put("/items/{item_id}")
+def atualizar_item(item_id: int, nome: str):
+    db = SessionLocal()
+    item = db.query(Item).filter(Item.id == item_id).first()
+    if not item:
+        db.close()
+        raise HTTPException(status_code=404, detail="Item não encontrado")
+    item.nome = nome
+    db.commit()
+    db.refresh(item)
+    db.close()
+    return item
+
+@app.delete("/items/{item_id}")
+def deletar_item(item_id: int):
+    db = SessionLocal()
+    item = db.query(Item).filter(Item.id == item_id).first()
+    if not item:
+        db.close()
+        raise HTTPException(status_code=404, detail="Item não encontrado")
+    db.delete(item)
+    db.commit()
+    db.close()
+    return {"mensagem": f"Item {item_id} deletado com sucesso"}
