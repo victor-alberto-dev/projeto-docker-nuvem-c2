@@ -135,8 +135,10 @@ docker compose up -d
 | GET | `/` | Verifica se a API está no ar |
 | GET | `/items/` | Lista todos os itens |
 | POST | `/items/?nome=valor` | Cria um novo item |
+| PUT | `/items/{id}?nome=valor` | Atualiza o nome de um item |
+| DELETE | `/items/{id}` | Deleta um item |
 
-> **Nota:** O navegador não aceita requisições POST diretamente pela URL. Use a documentação interativa em `http://<IP>:8080/docs` para testar os endpoints POST.
+> **Nota:** O navegador não aceita requisições POST, PUT e DELETE diretamente pela URL. Use a documentação interativa em `http://<IP>:8080/docs` para testar esses endpoints.
 
 ---
 
